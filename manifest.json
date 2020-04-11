@@ -1,7 +1,7 @@
 {
-  "name": "Keyboard Pin",
+  "name": "TabMate",
   "version": "0.3",
-  "description": "Creates a keyboard shortcut (Alt + Shift + P) to toggle the pinned state of the currently selected tab",
+  "description": "Creates keyboard shortcuts to manipulate tabs",
   "background": {
     "persistent": false,
     "scripts": ["background.js"]
@@ -10,6 +10,20 @@
     "toggle-pin": {
       "suggested_key": { "default": "Alt+Shift+P" },
       "description": "Toggle tab pin"
+    },
+    "move-tab-left": {
+      "suggested_key": {
+        "default": "Alt+Shift+Comma",
+        "mac": "MacCtrl+Comma"
+      },
+      "description": "Move tab left"
+    },
+    "move-tab-right": {
+      "suggested_key": {
+        "default": "Alt+Shift+Period",
+        "mac": "MacCtrl+Period"
+      },
+      "description": "Move tab right"
     }
   },
   "manifest_version": 2
