@@ -8,22 +8,31 @@
   },
   "commands": {
     "toggle-pin": {
-      "suggested_key": { "default": "Alt+Shift+P" },
       "description": "Toggle tab pin"
     },
     "move-tab-left": {
       "suggested_key": {
-        "default": "Alt+Shift+Comma",
-        "mac": "MacCtrl+Comma"
+        "default": "Alt+Shift+Comma"
       },
       "description": "Move tab left"
     },
     "move-tab-right": {
       "suggested_key": {
-        "default": "Alt+Shift+Period",
-        "mac": "MacCtrl+Period"
+        "default": "Alt+Shift+Period"
       },
       "description": "Move tab right"
+    },
+    "move-tab-start": {
+      "suggested_key": {
+        "default": "Alt+Shift+K"
+      },
+      "description": "Move tab start"
+    },
+    "move-tab-end": {
+      "suggested_key": {
+        "default": "Alt+Shift+L"
+      },
+      "description": "Move tab end"
     }
   },
   "manifest_version": 2
