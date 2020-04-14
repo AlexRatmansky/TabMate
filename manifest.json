@@ -1,10 +1,14 @@
 {
-  "name": "TabMate",
+  "name": "Tabbbr",
   "version": "0.3",
   "description": "Creates keyboard shortcuts to manipulate tabs",
   "background": {
     "persistent": false,
     "scripts": ["background.js"]
+  },
+  "icons": {
+    "16": "icon/icon16.png",
+    "32": "icon/icon32.png"
   },
   "commands": {
     "toggle-pin": {
