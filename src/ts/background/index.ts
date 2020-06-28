@@ -1,8 +1,15 @@
-// Copyright (c) 2012 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+import { createStore } from "redux";
+import { wrapStore } from "webext-redux";
+import { configureApp } from "./AppConfig";
+import reducers, { loadState } from "./store";
 
-chrome.commands.onCommand.addListener(function (command) {
+const preloadedState = loadState();
+const store = createStore(reducers, preloadedState);
+
+configureApp(store);
+wrapStore(store);
+
+chrome.commands.onCommand.addListener((command) => {
   if (command == "toggle-pin") {
     // Get the currently selected tab
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -48,5 +55,23 @@ chrome.commands.onCommand.addListener(function (command) {
       var current = tabs[0];
       chrome.tabs.move(current.id, { index: -1 });
     });
+  }
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.greeting == "hello") {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      // Toggle the pinned status
+      var current: chrome.tabs.Tab = tabs[0];
+      chrome.tabs.update(current.id, { pinned: !current.pinned });
+    });
+
+    console.log(
+      sender.tab
+        ? "from a content script:" + sender.tab.url
+        : "from the extension"
+    );
+
+    sendResponse({ farewell: "goodbye" });
   }
 });
